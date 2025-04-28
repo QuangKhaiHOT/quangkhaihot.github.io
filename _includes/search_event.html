@@ -46,6 +46,12 @@
         });
     {% endfor %}
 
+    posts.forEach(function(post) {
+        if (post.date === "1900-01-01") {
+            post.date = "-";
+        }
+    });
+
     searchPost(posts);
 
     {% if page_type == "post" %}
