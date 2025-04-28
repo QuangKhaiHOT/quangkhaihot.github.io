@@ -58,7 +58,7 @@
                     </div>
                     <div class="info-post">
                         {%- assign posting_date = sub_page.date | date: "%Y-%m-%d" -%}
-                        {% if posting_date != "xxxx-xx-xx" %}
+                        {% if posting_date != "1900-01-01" %}
                         <span class="date">· {{ sub_page.date | date: "%Y-%m-%d" }}</span>
                         {% endif %}
                     </div>
