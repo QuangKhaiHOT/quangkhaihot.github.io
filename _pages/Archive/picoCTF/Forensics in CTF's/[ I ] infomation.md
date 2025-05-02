@@ -5,14 +5,19 @@ tags: [CTFs,forensics]
 date: 2025-05-02
 
 ---
-## Challenge
-### Description
+
+# Challenge
+--- 
+
+## Description
 Files can always be changed in a secret way. Can you find the flag?
 ![Tropical Paradise](/assets/img/forensics/cat.jpg "Cat")
-### Hint
+
+## Hint
 1. Look at the details of the file
 2. Make sure to submit the flag as picoCTF{XXXXX}
-### Analysis
+
+## Analysis
 Base on hint, start examining the image details using **<code>exiftool</code>** on Kali Linux
 The output obtained after running exiftool:
 ```
