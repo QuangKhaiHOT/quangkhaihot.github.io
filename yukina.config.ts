@@ -33,7 +33,7 @@ const YukinaConfig: Configuration = {
 
   username: "Quang Khải (Sonik)",
   sign: "",
-  avatarUrl: "/public/avt.JPG",
+  avatarUrl: "/avt.JPG",
   socialLinks: [
     {
       icon: "line-md:github-loop",
@@ -46,8 +46,8 @@ const YukinaConfig: Configuration = {
   maxFooterTagChip: 24,
 
   banners: [  
-    "/public/banner/banner1.jpg",
-    "/public/banner/banner2.jpg",
+    "/banner/banner1.jpg",
+    "/banner/banner2.jpg",
   ],
 
   slugMode: "HASH", // 'RAW' | 'HASH'
