@@ -47,7 +47,7 @@ const YukinaConfig: Configuration = {
 
   banners: [  
     "/banner/banner1.jpg",
-    "/banner/banner2.jpg",
+    "/banner/banner2.JPG",
   ],
 
   slugMode: "HASH", // 'RAW' | 'HASH'
