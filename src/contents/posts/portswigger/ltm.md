@@ -9,7 +9,7 @@ cover: '/projects/ltm/java.jpg'
 ---
 
 # Đồ án môn học - Lập trình mạng nâng cao
-> [File báo cáo - Lập trình mạng nâng cao](/public/projects/ltm/TranQuangKhai-22DH114583-LTMNC.pdf)
+> [File báo cáo - Lập trình mạng nâng cao](./public/projects/ltm/TranQuangKhai-22DH114583-LTMNC.pdf)
 
 > [Source code](https://github.com/QuangKhaiHOT/LapTrinhMangNangCao)
 

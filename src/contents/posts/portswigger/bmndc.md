@@ -10,7 +10,7 @@ cover: '/projects/bmndc/endpoint.png'
 
 # Bảo mật người dùng cuối
 
-> [File báo cáo - Bảo mật người dùng cuối](/public/projects/bmndc/TranQuangKhai-22DH114583-BMNDC.pdf)
+> [File báo cáo - Bảo mật người dùng cuối](./public/projects/bmndc/TranQuangKhai-22DH114583-BMNDC.pdf)
 
 Đồ án này tập trung vào việc xây dựng và triển khai một hệ thống bảo mật toàn diện cho thiết bị đầu cuối (Endpoint), kết hợp giữa giải pháp IDS/IPS (Suricata trên pfSense) và giám sát hành vi hệ thống (Wazuh) để phát hiện, ngăn chặn và phản ứng với các mối đe dọa an ninh mạng.
 

@@ -10,7 +10,7 @@ cover: '/projects/dtdm/k8s.jpg'
 
 # Điện toán đám mây
 
-> [File báo cáo - Điện toán đám mây](/public/projects/dtdm/Final_Report_TranQuangKhai_22DH114583.pdf)
+> [File báo cáo - Điện toán đám mây](./public/projects/dtdm/Final_Report_TranQuangKhai_22DH114583.pdf)
 
 Đồ án này được thực hiện với mục tiêu nghiên cứu và ứng dụng Kubernetes (K8s) – nền tảng điều phối container hàng đầu trong ngành – để xây dựng một hệ thống dịch vụ web hoàn chỉnh, từ đơn giản đến phức tạp, có khả năng mở rộng và phục hồi cao.
 
