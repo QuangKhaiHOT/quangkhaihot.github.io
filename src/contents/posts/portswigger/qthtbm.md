@@ -10,7 +10,7 @@ cover: '/projects/qthtbm/qthtbm.jpg'
 
 # Quản trị hệ thống bảo mật
 
-> [File báo cáo - Quản trị hệ thống bảo mật](./public/projects/qthtbm/BaoCaoBMHTTTCuoiKi.pdf)
+> [File báo cáo - Quản trị hệ thống bảo mật](https://quangkhaihot.github.io/projects/qthtbm/BaoCaoBMHTTTCuoiKi.pdf)
 
 Đồ án "Xây dựng chiến lược bảo mật cho hệ thống thông tin doanh nghiệp bán nhạc cụ" được thực hiện để thiết kế hệ thống bảo mật cho công ty Infinity Sould - doanh nghiệp kinh doanh nhạc cụ tại TP.HCM.
 
