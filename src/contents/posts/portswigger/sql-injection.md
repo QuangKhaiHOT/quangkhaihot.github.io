@@ -4,8 +4,8 @@ published: 2025-08-11
 description: Tìm hiểu về SQL injection.
 tags: [sqli, security]
 category: PortSwigger
-draft: false
-cover: '/post-imgs/sqli.png'
+draft: true
+cover: '/post-imgs/sqli/sqli.png'
 ---
 
 # SQL injection là gì?

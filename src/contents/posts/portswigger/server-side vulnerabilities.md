@@ -4,8 +4,8 @@ published: 2025-08-15
 description: Tìm hiểu về các lỗ hổng server-side.
 tags: [server-side, security]
 category: PortSwigger
-draft: false
-cover: '/post-imgs/sv-side.jpg'
+draft: true
+cover: '/post-imgs/svside/sv-side.jpg'
 ---
 
 # Path traversal
