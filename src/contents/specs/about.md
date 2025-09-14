@@ -13,7 +13,6 @@
 
 > <img src="/sonic.png" alt="Sonic" width="48" align="left" style="margin-right:15px;"/>  
 >
->
 > **<span style="color:#1E90FF; font-size:18px;">Sonik</span>** là nghệ danh của mình.  
 > Mình đã thay đổi chữ **`c`** trong tên của nhân vật **Sonic** thành chữ **`k`** trong tên của mình.  
 > Nhân vật **Sonic** chính là **hình ảnh phản chiếu** của bản thân —  
@@ -27,6 +26,7 @@
 > **Trường Đại học Ngoại ngữ - Tin học**.   
 > Mình đặc biệt **thích tìm hiểu** về các **lỗ hổng bảo mật** và luôn muốn **phát hiện những điểm yếu tiềm ẩn**  
 > để **nâng cao kiến thức**, **rèn luyện kỹ năng** cho bản thân.  
+
 ---
 
 > <img src="/web.png" alt="Website" width="48" align="left" style="margin-right:15px;"/>  
